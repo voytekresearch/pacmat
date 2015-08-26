@@ -1,3 +1,24 @@
+% Calculate the phase and amplitude time series
+% 
+% Parameters
+% ----------
+% lo : array-like, 1d
+%     The low frequency time-series to use as the phase component
+% hi : array-like, 1d
+%     The high frequency time-series to use as the amplitude component
+% f_lo : (low, high), Hz
+%     The low frequency filtering range
+% f_hi : (low, high), Hz
+%     The low frequency filtering range
+% fs : float
+%     The sampling rate (default = 1000Hz)
+% 
+% Returns
+% -------
+% pha : array-like, 1d
+%     Time series of phase
+% amp : array-like, 1d
+%     Time series of amplitude
 function [pha, amp] = pa_series(lo, hi, f_lo, f_hi, fs)
 
 % Set the python path
