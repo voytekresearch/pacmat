@@ -6,29 +6,32 @@ fs = 1000;
 
 %% Test to see if PAC functions return values consistent with python
 
-myplv = plv(data,data,[13,30],[80,200],fs);
-assert(round(myplv,5) == 0.23778)
+% Set tolerance level
+a_tol = 0.00001;
 
-myglm = glm(data,data,[13,30],[80,200],fs);
-assert(round(myglm,5) == 0.03191)
+plvval = pac_plv(data,data,[13,30],[80,200],fs);
+assert(abs(plvval - 0.23778) < a_tol)
 
-mymi_tort = mi_tort(data,data,[13,30],[80,200],fs);
-assert(round(mymi_tort,5) == 0.00366)
+glmval = pac_glm(data,data,[13,30],[80,200],fs);
+assert(abs(glmval - 0.03191) < a_tol)
 
-mymi_canolty = mi_canolty(data,data,[13,30],[80,200],fs);
-assert(round(mymi_canolty,5) == 1.10063)
+tmival = pac_tmi(data,data,[13,30],[80,200],fs,20);
+assert(abs(tmival - 0.00366) < a_tol)
 
-myozkurt = ozkurt(data,data,[13,30],[80,200],fs);
-assert(round(myozkurt,5) == 0.07548)
+cmival = pac_cmi(data,data,[13,30],[80,200],fs);
+assert(abs(cmival - 1.10063) < a_tol)
+
+ozkurtval = pac_ozkurt(data,data,[13,30],[80,200],fs);
+assert(abs(ozkurtval - 0.07548) < a_tol)
+
+otcval = pac_otc(data,[80,200],4,fs,7,95,[-.5,.5],0.01);
+assert(abs(otcval - 220.32563) < a_tol)
 
 comod = comodulogram(data, data, [10,21],[50,150], 5, 50, fs, 'mi_tort');
-assert(round(comod(1,1),5) == 0.00287)
+assert(abs(comod(1,1) - 0.00287) < a_tol)
 
 [pha, amp] = pa_series(data, data,[13,30],[80,200],fs);
-assert(round(pha(1),5) == 1.57119)
+assert(abs(pha(1) - 1.57119) < a_tol)
 
 dist = pa_dist(pha, amp, 10);
-assert(round(dist(1),5) == 12.13961)
-
-myotc = otc(data,[80,200],4,fs,7,95,[-.5,.5],0.01);
-assert(round(myotc,5) == 220.32563)
+assert(abs(dist(1) - 12.13961) < a_tol)
