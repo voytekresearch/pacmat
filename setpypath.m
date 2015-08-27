@@ -1,4 +1,5 @@
 %SETPYPATH Change the path in python so that the pacpy wrapper functions
+%   SETPYPATH - usage does not contain inputs or outputs
 function setpypath()
 
 % Add pacpy to the path
