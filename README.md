@@ -1,7 +1,6 @@
 # pacmat
-A (__work in progress__) wrapper for a python module to calculate phase-amplitude coupling.
-Matlab 2014b or later required. Python installation with numpy and scipy required.
+A MATLAB library for calculating phase-amplitude coupling.
+MATLAB version 2014b or later is required.
+Users must install python and have numpy, scipy, and statsmodels packages in their path.
 
-This wrapper will return errors until the statsmodels dependency is removed and it is updated.
-
-The python module can be found at, https://github.com/voytekresearch/pacpy
+This is a wrapper for a python module that can be found at, https://github.com/voytekresearch/pacpy
