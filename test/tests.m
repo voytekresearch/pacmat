@@ -1,7 +1,7 @@
 %% Load data
 clear
 clc
-load('/Users/SP/code/pacmat/test/exampledata.mat')
+load('C:/gh/bv/pacmat/test/exampledata.mat')
 fs = 1000;
 
 %% Test to see if PAC functions return values consistent with python

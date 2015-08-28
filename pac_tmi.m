@@ -9,9 +9,6 @@
 %   low-frequency cycle (e.g. for 20 bins, each bin spans 18 degrees).
 function pac = pac_tmi(lo, hi, f_lo, f_hi, fs, Nbins)
 
-    % Set the python path
-    setpypath
-
     % Convert inputs
     lo = py.numpy.array(lo);
     hi = py.numpy.array(hi);
@@ -19,5 +16,5 @@ function pac = pac_tmi(lo, hi, f_lo, f_hi, fs, Nbins)
     f_hi = py.tuple(f_hi);
 
     % Call python
-    pac = py.pac.mi_tort(lo, hi, f_lo, f_hi, fs, Nbins);
+    pac = py.pacpy.pac.mi_tort(lo, hi, f_lo, f_hi, fs, Nbins);
 end

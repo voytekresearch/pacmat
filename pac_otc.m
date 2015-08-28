@@ -13,16 +13,13 @@
 %   consecutive high-frequency events
 function pac = pac_otc(x, f_hi, f_step, fs, w, event_prc, t_modsig, t_buffer)
 
-    % Set the python path
-    setpypath
-
     % Convert inputs
     xpy = py.numpy.array(x);
     f_hipy = py.tuple(f_hi);
     t_modsigpy = py.tuple(t_modsig);
 
     % Call python
-    otcout = py.pac.otc(xpy, f_hipy, f_step, fs, w, event_prc, t_modsigpy, t_buffer);
+    otcout = py.pacpy.pac.otc(xpy, f_hipy, f_step, fs, w, event_prc, t_modsigpy, t_buffer);
 
     % Separate outputs
     pac = otcout{1};

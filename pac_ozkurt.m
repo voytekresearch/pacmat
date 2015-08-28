@@ -7,9 +7,6 @@
 %   in f_lo and f_hi (Hz), respectively. fs is the sampling rate (Hz).
 function pac = pac_ozkurt(lo, hi, f_lo, f_hi, fs)
 
-    % Set the python path
-    setpypath
-
     % Convert inputs
     lo = py.numpy.array(lo);
     hi = py.numpy.array(hi);
@@ -17,5 +14,5 @@ function pac = pac_ozkurt(lo, hi, f_lo, f_hi, fs)
     f_hi = py.tuple(f_hi);
 
     % Call python
-    pac = py.pac.ozkurt(lo, hi, f_lo, f_hi, fs);
+    pac = py.pacpy.pac.ozkurt(lo, hi, f_lo, f_hi, fs);
 end
