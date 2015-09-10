@@ -1,16 +1,39 @@
-%PAC_OTC Calculate phase-amplitude coupling (PAC) using the modulation
-%index method (see Dvorak, 2014)
-%   pac = PAC_OTC(x, f_hi, f_step, fs, w, event_prc, t_modsig, t_buffer)
-%   calculates PAC within the time series x. High frequency activity events
-%   are calculated for each frequency band between the limits set in f_hi
-%   (Hz) and with the width set in f_step (Hz). fs is the sampling rate
-%   (Hz). w is the length of the filter in terms of the number of cycles of
-%   the oscillation whose frequency is the center of the bandpass filter.
-%   event_prc (between 0 and 100) is the percentile threshold of the power 
-%   signal of an oscillation for a high-frequency event to be declared. The
-%   modulation signal is extracted in the time range defined in t_modsig
-%   (seconds). t_buffer defines the minimum time (seconds) between
-%   consecutive high-frequency events
+% pac_otc() -  calculate phase-amplitude coupling (PAC) using the
+%     oscillation-triggered coupling (OTC) method (see Dvorak, 2014)
+%
+% Usage:
+%     >> pac = pac_otc(x, f_hi, f_step, fs, w, event_prc, t_modsig, t_buffer);
+%
+% Inputs:
+%     x           = voltage time series
+%     f_hi        = range of entire high-frequency band (Hz)
+%     f_step      = frequency window size into which f_hi is divided (Hz)
+%     fs          = sampling rate (Hz)
+%     w           = length of the filter in terms of the number of cycles
+%                   of the frequency at the center of the bandpass filter
+%     event_prc   = percentile threshold of the power signal of an
+%                   oscillation for a high-frequency event to be declared
+%                   (between 0 and 100)
+%     t_modsig    = time range of the modulation signal
+%     t_buffer    = minimum time (seconds) between consecutive
+%                   high-frequency events
+%
+% Outputs:
+%     pac         = phase-amplitude coupling value
+%
+% Example:
+%     >> t = 0:.001:10; % Define time array
+%     >> lo = sin(t * 2 * pi * 6); % Create low frequency carrier
+%     >> hi = sin(t * 2 * pi * 100); % Create modulated oscillation
+%     >> hi(angle(hilbert(lo)) > -pi*.5) = 0; % Clip to 1/4 of cycle
+%     >> pac_otc(lo + hi, [80,150], 4, 1000, 7, 95, [-1,1], .01)
+%     ans =
+%         1.9679
+%
+% See also: comodulogram(), pa_series(), pa_dist()
+
+% Author: Scott Cole (Voytek lab) 2015
+
 function pac = pac_otc(x, f_hi, f_step, fs, w, event_prc, t_modsig, t_buffer)
 
     % Convert inputs

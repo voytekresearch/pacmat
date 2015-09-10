@@ -33,5 +33,5 @@ assert(abs(comod(1,1) - 0.00287) < a_tol)
 [pha, amp] = pa_series(data, data,[13,30],[80,200],fs);
 assert(abs(pha(1) - 1.57119) < a_tol)
 
-dist = pa_dist(pha, amp, 10);
+[bins, dist] = pa_dist(pha, amp, 10);
 assert(abs(dist(1) - 12.13961) < a_tol)
