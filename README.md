@@ -1,5 +1,7 @@
 # pacmat
 
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](http://www.repostatus.org/badges/latest/inactive.svg)](http://www.repostatus.org/#inactive)
+
 A MATLAB library for calculating phase-amplitude coupling.
 
 This is a wrapper for a python module that can be found at, https://github.com/voytekresearch/pacpy
@@ -12,13 +14,11 @@ MATLAB version 2014b or later is required.
 
 [Anaconda](https://store.continuum.io/cshop/anaconda/) or another version of python with scientific packages should be installed.
 
-Then, pacpy must be installed (not yet uploaded to pypi).  To install:
+Then, pacpy must be installed.  To install:
 
-1. `git clone https://github.com/voytekresearch/pacpy` into the directory of your choice.
-2. At the command line, cd into that choice directory
-3. and type `pip install .`
+	pip install pacpy
 
-Users must also install the statsmodels package (pip install statsmodels). This dependency will be removed in a later version.
+Users must also install the statsmodels package (pip install statsmodels).
 
 ## Usage
 
